@@ -9,6 +9,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+SQS_QUEUE_URL = os.getenv('SQS_QUEUE_URL')
 
 application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 

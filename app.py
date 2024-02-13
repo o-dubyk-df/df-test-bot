@@ -3,6 +3,7 @@ import asyncio
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
 import logging
+import os
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)

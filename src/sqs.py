@@ -21,7 +21,7 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 def lambda_handler(event, context):
     logger.info("event: {}".format(json.dumps(event)))
-    return asyncio.get_event_loop().run_until_complete(main(event, context))
+    asyncio.get_event_loop().run_until_complete(main(event, context))
 
 async def main(event, context):
     start_handler = CommandHandler('start', start)
@@ -30,21 +30,10 @@ async def main(event, context):
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)
     application.add_handler(echo_handler)
     
-    try:    
+    for record in event['Records']:
         await application.initialize()
         await application.process_update(
-            Update.de_json(json.loads(event["body"]), application.bot)
+            Update.de_json(json.loads(record["body"]), application.bot)
         )
-    
-        return {
-            'statusCode': 200,
-            'body': 'Success'
-        }
-
-    except Exception as exc:
-        return {
-            'statusCode': 500,
-            'body': 'Failure'
-        }
     
    

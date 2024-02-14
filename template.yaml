@@ -1,0 +1,56 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Sample-Python-Telegram-Bot-AWS-Serverless
+
+Parameters:
+  TelegramBotToken:
+    Type: String
+    Default: ""
+    NoEcho: true
+
+Resources:
+  ApiBotFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Timeout: 3
+      Runtime: python3.12
+      CodeUri: src/
+      Handler: api.lambda_handler
+      # Events:
+      #   BotHttpApi:
+      #     Type: HttpApi
+      Environment:
+        Variables:
+          SQS_QUEUE_URL: !GetAtt BotQueue.QueueUrl
+      Policies:
+        - SQSSendMessagePolicy:
+            QueueName: !GetAtt BotQueue.QueueName
+
+  SqsBotFunction:
+    Type: AWS::Serverless::Function 
+    Properties:
+      Timeout: 3
+      Runtime: python3.12
+      CodeUri: src/
+      Handler: sqs.lambda_handler
+      Events:
+        BotSqs:
+          Type: SQS
+          Properties:
+            BatchSize: 1
+            Queue: !GetAtt BotQueue.Arn
+      Environment:
+        Variables:
+          TELEGRAM_BOT_TOKEN: !Ref TelegramBotToken
+          SQS_QUEUE_URL: !GetAtt BotQueue.QueueUrl
+      Policies:
+        - SQSPollerPolicy:
+            QueueName: !GetAtt BotQueue.QueueName
+
+  BotQueue:
+    Type: AWS::SQS::Queue
+
+# Outputs:
+#   TelegramApi:
+#     Value: !Sub "${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}"

@@ -8,8 +8,7 @@ import os
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-# TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-TELEGRAM_BOT_TOKEN = '6972948262:AAFGErnB6zzpKSZz1vUFdD1ceyqBuQN4eXY'
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 SQS_QUEUE_URL = os.getenv('SQS_QUEUE_URL')
 
 application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()

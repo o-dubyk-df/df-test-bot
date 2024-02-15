@@ -1,8 +1,7 @@
 import unittest
-from unittest.mock import Mock, AsyncMock
+from unittest.mock import Mock, AsyncMock, ANY
 from telegram import Update
 from sqs import hello_command, echo
-from unittest.mock import ANY
 
 class TestSQSHandler(unittest.IsolatedAsyncioTestCase):
 

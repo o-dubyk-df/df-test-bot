@@ -13,18 +13,23 @@ SQS_QUEUE_URL = os.getenv('SQS_QUEUE_URL')
 
 application = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
+async def hello_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="world")
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await context.bot.send_message(chat_id=update.effective_chat.id, text=update.message.text)
+    text = update.message.text.lower()
+    if 'hello' in text:
+        text_answer="world"
+    else:
+        text_answer="I don't understand"
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=text_answer)
 
 def lambda_handler(event, context):
     logger.info("event: {}".format(json.dumps(event)))
     asyncio.get_event_loop().run_until_complete(main(event, context))
 
 async def main(event, context):
-    start_handler = CommandHandler('start', start)
+    start_handler = CommandHandler('hello', hello_command)
     application.add_handler(start_handler)
     
     echo_handler = MessageHandler(filters.TEXT & (~filters.COMMAND), echo)

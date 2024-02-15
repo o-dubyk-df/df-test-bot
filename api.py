@@ -14,7 +14,15 @@ queue = sqs.Queue(SQS_QUEUE_URL)
 def lambda_handler(event, context):
     logger.info("event: {}".format(json.dumps(event)))
     try:    
-        queue.send_message(MessageBody=event["body"])
+        body = event.get("body", "")
+        
+        if "/hello" in body or "/start" in body or "hello" in body.lower():
+            message = body
+        else:
+            message = "I don't understand"
+        
+        queue.send_message(MessageBody=message)
+
         return {
             'statusCode': 200,
             'body': 'Success'

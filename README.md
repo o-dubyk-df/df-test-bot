@@ -24,5 +24,6 @@ curl  -i -k -XPOST https://fc9c1488.execute-api.us-east-1.localhost.localstack.c
 ### Tasks for test
 
 1. Modify the code so that the bot only responds to the “/hello” command or any message containing “hello” in any case.
-2. Ensure that the SQS queue does not receive the full Telegram payload but instead only the minimal data required to generate a message to the client in the Lambda function sqs.py.
-3. Additionally, create unit tests for both AWS Lambda functions: api.py and sqs.py.
+2. The bot must respond to any other text message: Sorry, I don’t understand.
+3. Ensure that the SQS queue does not receive the full Telegram payload but instead only the minimal data required to generate a message to the client in the Lambda function sqs.py.
+4. Additionally, create unit tests for both AWS Lambda functions: api.py and sqs.py.

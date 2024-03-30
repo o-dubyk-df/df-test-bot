@@ -10,13 +10,13 @@ def hello_events():
     return {
         "Records": [
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"hello"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"hello"}}'
             },
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"testhello"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"testhello"}}'
             },
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"123hello123"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"123hello123"}}'
             },
         ]
     }
@@ -27,10 +27,10 @@ def hello_command_events():
     return {
         "Records": [
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"/hello"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"/hello"}}'
             },
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"!hello"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"!hello"}}'
             },
         ]
     }
@@ -41,10 +41,10 @@ def unknown_events():
     return {
         "Records": [
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"test something"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"test something"}}'
             },
             {
-                "body": '{"update_id":813352806,"message":{"message_id":186,"from":{"id":123,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":123,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"123123123heellooo123123123"}}'
+                "body": '{"update_id":813352806,"message":{"message_id":186,"chat":{"id":123,"type":"private"},"date":1708367401,"text":"11122 2hhheeellooo3332 3222"}}'
             },
         ]
     }

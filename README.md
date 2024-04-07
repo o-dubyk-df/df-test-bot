@@ -1,21 +1,19 @@
-# Test telegram bot
+# Test serverless telegram bot
 
 ## Local Development
 
-### [localstack](https://docs.localstack.cloud/getting-started/installation/)
-
-### Deployment to localstack
-
-define variables in .env
-
-```
-make start
-```
-
-grab stack output to get api endpoint
+1. Install and setup [localstack](https://docs.localstack.cloud/getting-started/installation/)
+2. define variables in .env
+3. `make start`
+4. Grab stack output to get api endpoint
 
 ### Testing
+Test the code:
+```
+ruff check & python -m unittest src/tests.py
+```
 
+Test the bot:
 ```
 curl  -i -k -XPOST https://fc9c1488.execute-api.us-east-1.localhost.localstack.cloud/ -d '{"update_id":813352806,"message":{"message_id":186,"from":{"id":879487978,"is_bot":false,"first_name":"Test","last_name":"Test","language_code":"uk"},"chat":{"id":879487978,"first_name":"Test","last_name":"Test","type":"private"},"date":1708367401,"text":"hello"}}' -H 'Content-Type: application/json'
 ```

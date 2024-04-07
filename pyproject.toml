@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "df-test-bot"
+version = "0.1.0"
+description = "Telegram serverless bot"
+authors = ["giX <viacheslavlab@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+python-telegram-bot = "^21.0.1"
+boto3 = "^1.34.79"
+ruff = "^0.3.5"
+aws-sam-cli-local = "^1.69.0"
+awscli-local = "^0.22.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

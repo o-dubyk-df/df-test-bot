@@ -14,9 +14,9 @@ Resources:
     Type: AWS::Serverless::Function 
     Properties:
       Timeout: 3
-      Runtime: python3.12
+      Runtime: python3.11
       CodeUri: src/
-      Handler: api.lambda_handler
+      Handler: api.api_handler
       FunctionUrlConfig:
         AuthType: NONE
       Environment:
@@ -30,9 +30,9 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Timeout: 3
-      Runtime: python3.12
+      Runtime: python3.11
       CodeUri: src/
-      Handler: sqs.lambda_handler
+      Handler: sqs.sqs_handler
       Events:
         BotSqs:
           Type: SQS

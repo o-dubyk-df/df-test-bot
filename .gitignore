@@ -1,0 +1,7 @@
+.venv
+.env
+.idea
+.ruff_cache
+.aws-sam
+**/__pychache__
+poetry.lock
